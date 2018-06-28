@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  Team.swift
 //  projet3
 //
 //  Created by Vigneswaranathan Sugeethkumar on 26/06/2018.
@@ -8,12 +8,9 @@
 
 import Foundation
 
-class Combattant {
-    var nom : String = "combattant"
-    var pv :Int = 100
-    var demage = 10
+// Class Team
+
+class Team {
+    var name : String = "nom"
+    var team :[GameCharacter] = []
 }
-
-
-
-
