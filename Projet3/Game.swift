@@ -9,5 +9,13 @@
 import Foundation
 
 class Game {
+    var team1 : Team
+    var team2 : Team
     
+    //Constructor
+    
+    init (team1: Team,team2 : Team){
+        self.team1 = team1
+        self.team2 = team2
+    }
 }
