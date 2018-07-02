@@ -35,3 +35,26 @@ class Fighter : GameCharacter {
     }
 }
 
+class Mage : GameCharacter {
+    
+    init(name: String) {
+        super.init(name: name, hp: 70, damage: 2)
+    }
+}
+
+class Colossus : GameCharacter {
+    init(name: String) {
+        super.init(name: name, hp: 130, damage: 4)
+    }
+    
+}
+
+class Dwarf: GameCharacter {
+    init(name: String) {
+        super.init(name: name, hp: 60, damage: 15)
+    }
+}
+    
+
+
+
