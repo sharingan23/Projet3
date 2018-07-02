@@ -11,7 +11,7 @@ import Foundation
     
 print("Choose your character\n For Fighter type 1\n For Mage type 2\n For Colossus type 3\n For Dwarf type 4/n")
 
-let firstCharacter = readLine()`
+let firstCharacter = readLine()
 
 if firstCharacter != nil {
     
