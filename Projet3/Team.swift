@@ -17,7 +17,9 @@ class Team {
     init() {
     
     selectTeamName()
-    createCharactersType()
+    addCharacterToTeam(charac: createCharacters())
+    addCharacterToTeam(charac: createCharacters())
+    addCharacterToTeam(charac: createCharacters())
     
     }
     
@@ -30,7 +32,47 @@ class Team {
         
     }
     
-    func createCharactersType () {
+
+    
+    
+    //Check if the character name is already on the team
+    
+    func checkCharactersName(checkname :String) -> Bool {
+        for personnage in members {
+            if personnage.name == checkname {
+                print("nom deja existant,saisir un autre nom")
+                return false
+            } else {
+                print("Ajoutez personnage")
+                return true
+                
+            }
+        
+        }
+        return true
+    }
+    
+
+        
+        
+        //The player choose his character name
+        
+        func createCharactersName() -> String {
+            
+            let name = readLine()
+            
+            if let nameString = name {
+                if checkCharactersName(checkname: nameString){
+                 return nameString
+            }
+                
+            return createCharactersName()
+    }
+            return "default name"
+    }
+    
+    func createCharacters () -> GameCharacter {
+        
         //The player choose his character type
         
         print("Please choose your Character\n  For Fighter type 1\n For Mage type 2\n For Colossus type 3\n For Dwarf type 4\n")
@@ -43,31 +85,46 @@ class Team {
             case 1:
                 print("You choised Fighter , please choose his name")
                 
-                checkCharactersName(checkname: createCharactersName())
                 
                 
-                    
-                    
-                    
+                return Fighter(name: createCharactersName())
+                
+            case 2:
+                print("You Mage , please choose his name")
+                
+                
+                
+                return Mage(name: createCharactersName())
+                
+            case 3:
+                print("You choised Colossus , please choose his name")
+                
+                
+                
+                return Colossus(name: createCharactersName())
+                
+            case 4:
+                print("You choised Dwarf , please choose his name")
+                
+                
+                
+                return Dwarf(name: createCharactersName())
+                
+                
+                
+                
+                
+                
             default:
-                print("Type 1")
+                print("Type 1,2,3 or 4")
+                return createCharacters()
             }
-                
-            }
+            
         }
-        
-        
-        //The player choose his character name
-        
-        func createCharactersName() -> String {
-            
-            let name = readLine()
-            
-            if let nameString = name {
-                 return nameString
-            }
-            return "Default"
+        return createCharacters()
     }
+
+    
            
         
             
@@ -81,21 +138,11 @@ class Team {
         
        
         
-        //Check if the character name is already on the team
-        
-    func checkCharactersName(checkname :String) {
-            for personnage in members {
-                if personnage.name == checkname {
-                    print("nom deja existant")
-                } else {
-                    print("Ajoutez personnage")
-                    
-                }
-            }
-        }
         
         //Add the character to team
-    
+    func addCharacterToTeam (charac: GameCharacter) {
+        members = members + [charac]
+    }
         
     
     
