@@ -14,8 +14,8 @@ class Game {
     
     //Constructor
     
-    init (team1: Team,team2 : Team){
-        self.team1 = team1
-        self.team2 = team2
+    init (){
+        self.team1 = Team()
+        self.team2 = Team()
     }
 }
