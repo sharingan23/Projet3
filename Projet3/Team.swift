@@ -51,6 +51,7 @@ class Team {
         }
         return true
     }
+
     
 
         
@@ -68,7 +69,7 @@ class Team {
                 
             return createCharactersName()
     }
-            return "default name"
+            return createCharactersName()
     }
     
     func createCharacters () -> GameCharacter {
@@ -90,7 +91,7 @@ class Team {
                 return Fighter(name: createCharactersName())
                 
             case 2:
-                print("You Mage , please choose his name")
+                print("You choised Mage , please choose his name")
                 
                 
                 
@@ -126,22 +127,9 @@ class Team {
 
     
            
-        
-            
-    
-    
-        
-       
-        
-
-
-        
-       
-        
-        
         //Add the character to team
     func addCharacterToTeam (charac: GameCharacter) {
-        members = members + [charac]
+        self.members = members + [charac]
     }
         
     
