@@ -8,13 +8,15 @@
 
 import Foundation
 
+//Create a game
 var game = Game()
 
 
-
+//test of createCharacters
 game.team1.createCharacters()
 game.team2.createCharacters()
 
+//test of infoTeam
 game.team1.infoTeam ()
 game.team2.infoTeam()
 

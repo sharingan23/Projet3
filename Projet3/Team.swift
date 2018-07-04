@@ -55,7 +55,7 @@ class Team {
         func createCharactersName() -> String {
             
             let name = readLine()
-            
+            //Use of function checkCharactersName of class game , NOT function of class Team
             if game!.checkCharactersName(name: name!){
                  return name!
             
@@ -124,6 +124,7 @@ class Team {
     }
     
     func createCharacters () {
+        //3 character created
         addCharacterToTeam(charac: createCharacter())
         addCharacterToTeam(charac: createCharacter())
         addCharacterToTeam(charac: createCharacter())
@@ -131,6 +132,7 @@ class Team {
     
     
     func infoTeam () {
+        //Loop of members
         for personnage in self.members {
             if let mage = personnage as? Mage{
                 print("The team \(self.name) is composed of Mage named \(mage.name) with \(mage.hp) helth points, do \(mage.damage) hp of damage and heal \(mage.heal) health points\n")
@@ -153,14 +155,18 @@ class Team {
     func chooseCharacter() -> GameCharacter{
         print("Please choose your Character you want to play thise round,type his name")
         
+        //Ask to type for choose character
         let name = readLine()
         
+        // Loop of members of character
         for personnage in members{
             
             if name == personnage.name{
                 return personnage
             }
         }
+        
+        // ask until the user type a correct name of his character on team
         print("Please type his correct name")
         return chooseCharacter()
     }
