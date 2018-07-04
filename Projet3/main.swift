@@ -15,13 +15,7 @@ var game = Game()
 game.team1.createCharacters()
 game.team2.createCharacters()
 
-print(game.team1.members[0].name)
-print(game.team1.members[1].name)
-print(game.team1.members[2].name)
-
-print(game.team2.members[0].name)
-print(game.team2.members[1].name)
-print(game.team2.members[2].name)
+game.infoTeam ()
 
 
 

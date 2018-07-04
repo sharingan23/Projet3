@@ -67,7 +67,7 @@ class Team {
         
         //The player choose his character type
         
-        print("Please choose your Character for \(name) \n  For Fighter type 1\n For Mage type 2\n For Colossus type 3\n For Dwarf type 4\n")
+        print("Please choose your Character for \(name) \n For Fighter type 1\n For Mage type 2\n For Colossus type 3\n For Dwarf type 4\n")
         
         let choiseNum = Int(readLine()!)
         
