@@ -20,6 +20,13 @@ game.team2.createCharacters()
 game.team1.infoTeam ()
 game.team2.infoTeam()
 
+print("\(game.team1.members[0].name)")
+print("\(game.team1.members[1].name)")
+print("\(game.team1.members[2].name)")
+
+print("\(game.team2.members[0].name)")
+print("\(game.team2.members[1].name)")
+print("\(game.team2.members[2].name)")
 
     
     

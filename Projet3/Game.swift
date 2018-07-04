@@ -35,4 +35,10 @@ class Game {
         
     }
     
+    func Combat(){
+        
+        
+        
+    }
+    
 }

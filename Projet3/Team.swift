@@ -22,7 +22,7 @@ class Team {
     }
     
     func selectTeamName () {
-        print("Type your team name please")
+        print("Type your team name please:")
         let name = readLine()
         if let name = name {
             self.name = name
@@ -67,7 +67,7 @@ class Team {
         
         //The player choose his character type
         
-        print("Please choose your Character for \(name) \n For Fighter type 1\n For Mage type 2\n For Colossus type 3\n For Dwarf type 4\n")
+        print("Please choose your Character for \(name) : \n -For Fighter type 1\n -For Mage type 2\n -For Colossus type 3\n -For Dwarf type 4\n")
         
         let choiseNum = Int(readLine()!)
         
@@ -135,30 +135,30 @@ class Team {
         //Loop of members
         for personnage in self.members {
             if let mage = personnage as? Mage{
-                print("The team \(self.name) is composed of Mage named \(mage.name) with \(mage.hp) helth points, do \(mage.damage) hp of damage and heal \(mage.heal) health points\n")
+                print("Team \(self.name) : Mage - Name: \(mage.name) - HP: \(mage.hp) hp - Damage: \(mage.damage) hp - Heal: \(mage.heal) hp\n")
                 
             }
             
             if let fighter = personnage as? Fighter {
-                print("The team \(self.name) is composed of Fighter named \(fighter.name) with \(fighter.hp) helth points, do \(fighter.damage) hp of damage\n")
+                print("Team \(self.name) : Fighter - Name : \(fighter.name) - HP: \(fighter.hp) hp - Damage: \(fighter.damage) hp\n")
                 
             }
             if let colossus = personnage as? Colossus {
-                print("The team \(self.name) is composed of Colossus named \(colossus.name) with \(colossus.hp) helth points, do \(colossus.damage) hp of damage\n")
+                print("Team \(self.name) : Colossus - Name : \(colossus.name) - HP: \(colossus.hp) hp - Damage \(colossus.damage) hp\n")
             }
-            else{
-                print("The team \(self.name) is composed of Dwarf named \(personnage.name) with \(personnage.hp) helth points, do \(personnage.damage) hp of damage\n")
+            if let dwarf = personnage as? Dwarf{
+                print("Team \(self.name) : Dwarf - Named : \(dwarf.name) - HP: \(dwarf.hp) hp - Damage \(dwarf.damage) hp\n")
             }
         }
     }
     
     func chooseCharacter() -> GameCharacter{
-        print("Please choose your Character you want to play thise round,type his name")
+        print("Please choose your Character")
         
         //Ask to type for choose character
         let name = readLine()
         
-        // Loop of members of character
+        // Search if typed personnage is on team
         for personnage in members{
             
             if name == personnage.name{
@@ -166,11 +166,8 @@ class Team {
             }
         }
         
-        // ask until the user type a correct name of his character on team
+        // Ask until the user type a correct name of his character on team
         print("Please type his correct name")
         return chooseCharacter()
     }
-        
-    
-    
 }
