@@ -35,25 +35,4 @@ class Game {
         
     }
     
-    
-    
-    func infoTeam () {
-        for personnage in team1.members {
-            if let mage = personnage as? Mage{
-                print("The team \(team1.name) is composed of Mage named \(mage.name) with \(mage.hp) helth points, do \(mage.damage) hp of damage and heal \(mage.heal) health points\n")
-                
-            }
-            
-            if let fighter = personnage as? Fighter {
-                print("The team \(team1.name) is composed of Fighter named \(fighter.name) with \(fighter.hp) helth points, do \(fighter.damage) hp of damage\n")
-                
-            }
-            if let colossus = personnage as? Colossus {
-                print("The team \(team1.name) is composed of Colossus named \(colossus.name) with \(colossus.hp) helth points, do \(colossus.damage) hp of damage\n")
-            }
-            else{
-                print("The team \(team1.name) is composed of Dwarf named \(personnage.name) with \(personnage.hp) helth points, do \(personnage.damage) hp of damage\n")
-            }
-        }
-    }
 }

@@ -15,8 +15,8 @@ var game = Game()
 game.team1.createCharacters()
 game.team2.createCharacters()
 
-game.infoTeam ()
-
+game.team1.infoTeam ()
+game.team2.infoTeam()
 
 
     

@@ -128,6 +128,42 @@ class Team {
         addCharacterToTeam(charac: createCharacter())
         addCharacterToTeam(charac: createCharacter())
     }
+    
+    
+    func infoTeam () {
+        for personnage in self.members {
+            if let mage = personnage as? Mage{
+                print("The team \(self.name) is composed of Mage named \(mage.name) with \(mage.hp) helth points, do \(mage.damage) hp of damage and heal \(mage.heal) health points\n")
+                
+            }
+            
+            if let fighter = personnage as? Fighter {
+                print("The team \(self.name) is composed of Fighter named \(fighter.name) with \(fighter.hp) helth points, do \(fighter.damage) hp of damage\n")
+                
+            }
+            if let colossus = personnage as? Colossus {
+                print("The team \(self.name) is composed of Colossus named \(colossus.name) with \(colossus.hp) helth points, do \(colossus.damage) hp of damage\n")
+            }
+            else{
+                print("The team \(self.name) is composed of Dwarf named \(personnage.name) with \(personnage.hp) helth points, do \(personnage.damage) hp of damage\n")
+            }
+        }
+    }
+    
+    func chooseCharacter() -> GameCharacter{
+        print("Please choose your Character you want to play thise round,type his name")
+        
+        let name = readLine()
+        
+        for personnage in members{
+            
+            if name == personnage.name{
+                return personnage
+            }
+        }
+        print("Please type his correct name")
+        return chooseCharacter()
+    }
         
     
     
