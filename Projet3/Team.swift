@@ -13,13 +13,11 @@ import Foundation
 class Team {
     var name : String = "nom"
     var members :[GameCharacter] = []
+    var game: Game?
     
     init() {
     
     selectTeamName()
-    addCharacterToTeam(charac: createCharacters())
-    addCharacterToTeam(charac: createCharacters())
-    addCharacterToTeam(charac: createCharacters())
     
     }
     
@@ -42,12 +40,8 @@ class Team {
             if personnage.name == checkname {
                 print("nom deja existant,saisir un autre nom")
                 return false
-            } else {
-                print("Ajoutez personnage")
-                return true
-                
             }
-        
+            
         }
         return true
     }
@@ -62,21 +56,18 @@ class Team {
             
             let name = readLine()
             
-            if let nameString = name {
-                if checkCharactersName(checkname: nameString){
-                 return nameString
+            if game!.checkCharactersName(name: name!){
+                 return name!
+            
             }
-                
             return createCharactersName()
-    }
-            return createCharactersName()
-    }
+        }
     
-    func createCharacters () -> GameCharacter {
+    func createCharacter () -> GameCharacter {
         
         //The player choose his character type
         
-        print("Please choose your Character\n  For Fighter type 1\n For Mage type 2\n For Colossus type 3\n For Dwarf type 4\n")
+        print("Please choose your Character for \(name) \n  For Fighter type 1\n For Mage type 2\n For Colossus type 3\n For Dwarf type 4\n")
         
         let choiseNum = Int(readLine()!)
         
@@ -118,11 +109,11 @@ class Team {
                 
             default:
                 print("Type 1,2,3 or 4")
-                return createCharacters()
+                return createCharacter()
             }
             
         }
-        return createCharacters()
+        return createCharacter()
     }
 
     
@@ -130,6 +121,12 @@ class Team {
         //Add the character to team
     func addCharacterToTeam (charac: GameCharacter) {
         self.members = members + [charac]
+    }
+    
+    func createCharacters () {
+        addCharacterToTeam(charac: createCharacter())
+        addCharacterToTeam(charac: createCharacter())
+        addCharacterToTeam(charac: createCharacter())
     }
         
     

@@ -15,21 +15,35 @@ class Game {
     //Constructor
     
     init (){
+        
         self.team1 = Team()
         self.team2 = Team()
-        infoTeam ()
+        
+        team1.game = self
+        team2.game = self
+        
+        
+        
     }
+    
+   
+    
+    func checkCharactersName(name: String) -> Bool {
+        return team1.checkCharactersName(checkname: name) && team2.checkCharactersName(checkname: name)
+        
+    }
+    
+    
     
     func infoTeam () {
         for personnage in team1.members {
             if personnage.type != "Mage"{
                 print("L'equipe: \(team1.name) consitué de \(personnage.name) est un \(personnage.type)  avec \(personnage.hp) points de vie et fait \(personnage.damage) de dégats\n")
-
+                
             }else{
                 print("L'equipe \(team1.name) est \(personnage.name) est un \(personnage.type)  avec \(personnage.hp) points de vie et fait \(personnage.damage) et soigne \n")
                 
             }
-
-}
-}
+        }
+    }
 }
