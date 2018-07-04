@@ -135,19 +135,19 @@ class Team {
         //Loop of members
         for personnage in self.members {
             if let mage = personnage as? Mage{
-                print("Team \(self.name) : Mage - Name: \(mage.name) - HP: \(mage.hp) hp - Damage: \(mage.damage) hp - Heal: \(mage.heal) hp\n")
+                print("Team \(self.name) : •Mage - Name: \(mage.name) - HP: \(mage.hp) hp - Damage: \(mage.damage) hp - Heal: \(mage.heal) hp\n")
                 
             }
             
             if let fighter = personnage as? Fighter {
-                print("Team \(self.name) : Fighter - Name : \(fighter.name) - HP: \(fighter.hp) hp - Damage: \(fighter.damage) hp\n")
+                print("Team \(self.name) : •Fighter - Name : \(fighter.name) - HP: \(fighter.hp) hp - Damage: \(fighter.damage) hp\n")
                 
             }
             if let colossus = personnage as? Colossus {
-                print("Team \(self.name) : Colossus - Name : \(colossus.name) - HP: \(colossus.hp) hp - Damage \(colossus.damage) hp\n")
+                print("Team \(self.name) : •Colossus - Name : \(colossus.name) - HP: \(colossus.hp) hp - Damage \(colossus.damage) hp\n")
             }
             if let dwarf = personnage as? Dwarf{
-                print("Team \(self.name) : Dwarf - Named : \(dwarf.name) - HP: \(dwarf.hp) hp - Damage \(dwarf.damage) hp\n")
+                print("Team \(self.name) : •Dwarf - Named : \(dwarf.name) - HP: \(dwarf.hp) hp - Damage \(dwarf.damage) hp\n")
             }
         }
     }
@@ -161,7 +161,7 @@ class Team {
         // Search if typed personnage is on team
         for personnage in members{
             
-            if name == personnage.name{
+            if name! == personnage.name{
                 return personnage
             }
         }
@@ -171,3 +171,13 @@ class Team {
         return chooseCharacter()
     }
 }
+
+    func healcharacter (character: GameCharacter,healHp: Int) {
+        character.hp = character.hp + healHp
+        print("\(character.name) is was healed by \(healHp) hp, now have \(character.hp) hp\n")
+    }
+
+    func attack(target: GameCharacter,damage: Int) {
+    target.hp = target.hp - damage
+    print("\(target.name) took \(damage) hp, he is hp is : \(target.hp)")
+    }
