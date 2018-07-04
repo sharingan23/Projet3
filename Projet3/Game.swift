@@ -36,6 +36,8 @@ class Game {
     }
     
     func combat(){
+        
+        print("Please choose your Character to send in Arena")
         let player = team1.chooseCharacter()
         
         print("you choosed: \(player.name)\n")
@@ -43,22 +45,28 @@ class Game {
         if ((player as? Mage) != nil) {
             print("\(player.name) is a Mage, To heal type 1 or To attack type 2?")
             
-            let num = Int(readLine()!)
+            let mage = player as! Mage
             
-                switch num! {
-                case 1:
-                    print("Please Type a name of a character in your team to heal")
-                    let playerToheal = team1.chooseCharacter()
-                    healcharacter(character: playerToheal, healHp: 10)
-                    
-                default:
-                    print("A completer")
-                }
+            if mage.mageAction() {
+                let playerToHeal = team1.chooseCharacter()
+                mage.healcharacter(character: playerToHeal)
+            }
+            else {
+                let playerToAttack = team2.chooseCharacter()
+                mage.attack(target: playerToAttack)
+            }
+            
+            
         }
- 
-
+        
+        let playerToAttack = team2.chooseCharacter()
+        
+        player.attack(target: playerToAttack)
+        
     }
 }
+
+
 
     
 

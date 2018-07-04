@@ -153,7 +153,6 @@ class Team {
     }
     
     func chooseCharacter() -> GameCharacter{
-        print("Please choose your Character")
         
         //Ask to type for choose character
         let name = readLine()
@@ -170,14 +169,5 @@ class Team {
         print("Please type his correct name")
         return chooseCharacter()
     }
+
 }
-
-    func healcharacter (character: GameCharacter,healHp: Int) {
-        character.hp = character.hp + healHp
-        print("\(character.name) is was healed by \(healHp) hp, now have \(character.hp) hp\n")
-    }
-
-    func attack(target: GameCharacter,damage: Int) {
-    target.hp = target.hp - damage
-    print("\(target.name) took \(damage) hp, he is hp is : \(target.hp)")
-    }

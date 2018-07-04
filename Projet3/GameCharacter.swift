@@ -27,6 +27,12 @@ class GameCharacter {
         
         
     }
+    
+    func attack(target: GameCharacter) {
+        print("")
+        target.hp = target.hp - damage
+        print("\(target.name) took \(damage) hp of damage, he have now : \(target.hp) hp\n")
+    }
 }
 
 class Fighter : GameCharacter {
@@ -44,6 +50,30 @@ class Mage : GameCharacter {
         
         super.init(name: name, hp: 70, damage: 2)
         self.heal = 10
+    }
+    
+    func healcharacter (character: GameCharacter) {
+        character.hp = character.hp + heal
+        print("\(character.name) was healed \(heal) hp, now have \(character.hp) hp\n")
+    }
+    
+    func mageAction() -> Bool {
+        let num = Int(readLine()!)
+        
+        switch num! {
+        case 1:
+            return true
+            
+            
+        case 2:
+            return false
+            
+            
+        default:
+            print("Please type 1 or 2")
+            return mageAction()
+        }
+
     }
 }
 
