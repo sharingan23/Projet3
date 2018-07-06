@@ -20,7 +20,7 @@ game.team2.createCharacters()
 game.team1.infoTeam ()
 game.team2.infoTeam()
 
-game.combat()
+game.fight()
 
     
     

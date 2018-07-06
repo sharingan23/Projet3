@@ -169,5 +169,25 @@ class Team {
         print("Please type his correct name")
         return chooseCharacter()
     }
+    
+    func deleteDeadCharacter (){
+        var index = 0
+        for personnage in members{
+            if personnage.hp <= 0{
+                
+                members.remove(at: index)
+                print("\(personnage.name) is dead :(")
+                
+            }
+        index += 1
+        }
+        
+    }
+    
+    func endOfthegame() {
+        if members.isEmpty {
+            
+        }
+    }
 
 }

@@ -38,7 +38,7 @@ class Fighter : GameCharacter {
     
     
     init(name: String) {
-        super.init(name : name, hp: 100, damage : 30)
+        super.init(name : name, hp: 100, damage : 70)
     }
 }
 

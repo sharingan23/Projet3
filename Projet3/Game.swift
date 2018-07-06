@@ -39,6 +39,12 @@ class Game {
     
     func fight(){
         
+        if team1.members.isEmpty {
+            print("C'est la fin du combat, l'equipe \(team2.name) a gagné, bravo !")
+        } else if team2.members.isEmpty {
+            print("C'est la fin du combat, l'equipe \(team1.name) a gagné, bravo !")
+        }
+        
         if playerTurn {
         print("Please Team: \(team1.name) choose your Character to send in Arena")
         let player = team1.chooseCharacter()
@@ -51,6 +57,7 @@ class Game {
             let mage = player as! Mage
             
             if mage.mageAction() {
+                print("Please type the name of your character you want to heal")
                 let playerToHeal = team1.chooseCharacter()
                 mage.healcharacter(character: playerToHeal)
                 team1.infoTeam()
@@ -62,6 +69,7 @@ class Game {
                 print("Please type the name of the character you want to attack\n")
                 let playerToAttack = team2.chooseCharacter()
                 mage.attack(target: playerToAttack)
+                team2.deleteDeadCharacter()
                 team1.infoTeam()
                 team2.infoTeam()
                 playerTurn = false
@@ -76,6 +84,7 @@ class Game {
         let playerToAttack = team2.chooseCharacter()
         
         player.attack(target: playerToAttack)
+        team2.deleteDeadCharacter()
         team1.infoTeam()
         team2.infoTeam()
         playerTurn = false
@@ -95,6 +104,7 @@ class Game {
                     if mage.mageAction() {
                         let playerToHeal = team2.chooseCharacter()
                         mage.healcharacter(character: playerToHeal)
+                        team1.deleteDeadCharacter()
                         team2.infoTeam()
                         team1.infoTeam()
                         playerTurn = true
@@ -104,6 +114,7 @@ class Game {
                         print("Please type the name of the character you want to attack\n")
                         let playerToAttack = team1.chooseCharacter()
                         mage.attack(target: playerToAttack)
+                        team1.deleteDeadCharacter()
                         team2.infoTeam()
                         team1.infoTeam()
                         playerTurn = true
@@ -118,6 +129,7 @@ class Game {
                 let playerToAttack = team1.chooseCharacter()
                 
                 player.attack(target: playerToAttack)
+                team1.deleteDeadCharacter()
                 team2.infoTeam()
                 team1.infoTeam()
                 playerTurn = true
