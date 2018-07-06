@@ -29,9 +29,8 @@ class GameCharacter {
     }
     
     func attack(target: GameCharacter) {
-        print("")
         target.hp = target.hp - damage
-        print("\(target.name) took \(damage) hp of damage, he have now : \(target.hp) hp\n")
+        print("\(target.name) took \(damage) hp of damage from \(name), he have now : \(target.hp) hp\n")
     }
 }
 
@@ -39,7 +38,7 @@ class Fighter : GameCharacter {
     
     
     init(name: String) {
-        super.init(name : name, hp: 100, damage : 10)
+        super.init(name : name, hp: 100, damage : 30)
     }
 }
 
@@ -86,7 +85,7 @@ class Colossus : GameCharacter {
 
 class Dwarf: GameCharacter {
     init(name: String) {
-        super.init(name: name, hp: 60, damage: 15)
+        super.init(name: name, hp: 60, damage: 35)
     }
 }
     
