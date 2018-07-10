@@ -9,20 +9,20 @@
 import Foundation
 
 //Create a game
-var game = Game()
+var jeu = Game()
 
 
 //test of createCharacters
-game.team1.createCharacters()
-game.team2.createCharacters()
+jeu.team1.createCharacters()
+jeu.team2.createCharacters()
 
 //test of infoTeam
-game.team1.infoTeam ()
-game.team2.infoTeam()
+jeu.team1.infoTeam ()
+jeu.team2.infoTeam()
 
-game.fight()
+jeu.fight()
 
-    
+
     
     
     

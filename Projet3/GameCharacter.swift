@@ -19,7 +19,7 @@ class GameCharacter {
     var weapon : Weapon
     var heal = 0
     
-    // Constructors n initialization iof name, hp ,damage and type
+    // Constructors n initialization of name, hp ,damage and type
     
     init (name :String, hp : Int, weapon: Weapon, damage : Int, heal: Int) {
         
@@ -50,7 +50,7 @@ class Mage : GameCharacter {
 
     init(name: String) {
         
-        super.init(name: name, hp: 70,weapon: Potion(), damage: 2,heal: 10 )
+        super.init(name: name, hp: 70,weapon: PainKiller(), damage: 2,heal: 10 )
         self.heal = heal + weapon.heal
         self.damage = damage + weapon.damage
     }
@@ -58,20 +58,23 @@ class Mage : GameCharacter {
     func mageAction() -> Bool {
         let num = Int(readLine()!)
         
-        switch num! {
-        case 1:
+        if let num = num {
+        
+            switch num {
+            case 1:
             return true
             
             
-        case 2:
+            case 2:
             return false
             
             
-        default:
+            default:
             print("Please type 1 or 2")
             return mageAction()
+            }
         }
-        
+        return mageAction()
     }
 
     
@@ -84,7 +87,7 @@ class Mage : GameCharacter {
     
     class Colossus : GameCharacter {
         init(name: String) {
-            super.init(name: name, hp: 130, weapon: Axe(), damage: 2, heal: 0)
+            super.init(name: name, hp: 130, weapon: Axe(), damage: 5, heal: 0)
             self.damage = damage + weapon.damage
         }
         

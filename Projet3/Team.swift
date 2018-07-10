@@ -13,8 +13,7 @@ import Foundation
 class Team {
     var name : String = "nom"
     var members :[GameCharacter] = []
-    var game: Game?
-    
+    static var charactersName : [String] = []
     init() {
     
     selectTeamName()
@@ -36,8 +35,8 @@ class Team {
     //Check if the character name is already on the team
     
     func checkCharactersName(checkname :String) -> Bool {
-        for personnage in members {
-            if personnage.name == checkname {
+        for nameCharac in Team.charactersName {
+            if nameCharac == checkname {
                 print("nom deja existant,saisir un autre nom")
                 return false
             }
@@ -56,12 +55,15 @@ class Team {
             
             let name = readLine()
             //Use of function checkCharactersName of class game , NOT function of class Team
-            if game!.checkCharactersName(name: name!){
-                 return name!
+            if let name = name {
+            if checkCharactersName(checkname: name) {
+                return name
             
             }
             return createCharactersName()
         }
+            return createCharactersName()
+    }
     
     func createCharacter () -> GameCharacter {
         
@@ -121,6 +123,7 @@ class Team {
         //Add the character to team
     func addCharacterToTeam (charac: GameCharacter) {
         self.members = members + [charac]
+        Team.charactersName.append(charac.name)
     }
     
     func createCharacters () {
