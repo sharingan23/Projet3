@@ -14,6 +14,8 @@ class Game {
     var playerTurn : Bool
     var weapons : [Weapon]
     var healingWeapon : [Weapon]
+    var numOfRound = 0
+    var numOfHeal = 0
     
     //Constructor
     
@@ -30,7 +32,7 @@ class Game {
     
     
     func chestOrNot() -> Int {
-       let rand0To9 = Int(arc4random_uniform(10))
+       let rand0To9 = Int(arc4random_uniform(12))
         
         if rand0To9 < 4 {
             return rand0To9
@@ -40,12 +42,16 @@ class Game {
     }
     
     func fight() {
-        // Check if all character of team 1 are dead ou Team 2
+        // Check if all character of team 1 or Team 2 are dead
         if team1.members.isEmpty {
-            return print("C'est la fin du combat, l'equipe \(team2.name) a gagné, bravo !")
+            print("The fight had \(numOfRound) round,and the mages healed \(numOfHeal) times in the whole game")
+            print("C'est la fin du combat, l'equipe \(team2.name) a gagné, bravo !")
+            return
             
         } else if team2.members.isEmpty {
-           return print("C'est la fin du combat, l'equipe \(team1.name) a gagné, bravo !")
+            print("The fight had \(numOfRound) round,and the mages healed \(numOfHeal) times in the whole game")
+            print("C'est la fin du combat, l'equipe \(team1.name) a gagné, bravo !")
+            return
         }
         
         //Interve players
@@ -72,6 +78,13 @@ class Game {
             if num < 4 {
                 mage.heal = healingWeapon[num].heal
                 print("New chest appear and the player was equiped and now he heal \(mage.heal) hp")
+                // Bonus : Increase of heal power
+            } else if num < 8 {
+                mage.heal = mage.heal*2
+                print("\(mage.name) get power of God and his healing power is now increased,and now he heal \(mage.heal) hp :)")
+                } else if num < 12 {
+                print("\(mage.name) is sick and his healing power is now decreased,and now he heal \(player.heal) hp :(")
+                player.heal = player.heal/2
                 }
             
             print("To heal type 1 or To attack type 2?\n")
@@ -84,6 +97,9 @@ class Game {
                 //Info of Characters
                 player1.infoTeam()
                 player2.infoTeam()
+                // Count number of turn
+                numOfRound += 1
+                numOfHeal += 1
                 //Change turn and give hand to Team 1 or Team 2
                 if playerTurn == true {
                     playerTurn = false
@@ -100,6 +116,8 @@ class Game {
                 player2.deleteDeadCharacter()
                 player1.infoTeam()
                 player2.infoTeam()
+                //Count number of turn
+                numOfRound += 1
                 if playerTurn == true {
                     playerTurn = false
                 } else {
@@ -116,7 +134,14 @@ class Game {
             if num < 4 {
                 player.damage = weapons[num].damage
                 print("New chest appear and the player was equiped and now he do \(player.damage) hp of damage")
-            }
+                // Bonus : Increase of damage
+                } else if num < 8 {
+                    player.damage = player.damage*2
+                    print("\(player.name) get power of God and his damage is now increased,and now he do \(player.damage) hp of damage")
+                    } else if num < 12 {
+                    print("\(player.name) is sick and his damage is now decreased,and now he do \(player.damage) hp of damage")
+                    player.damage = player.damage/2
+                    }
         print("Please type the name of the character you want to attack\n")
         let playerToAttack = player2.chooseCharacter()
         
@@ -124,6 +149,8 @@ class Game {
         player2.deleteDeadCharacter()
         player1.infoTeam()
         player2.infoTeam()
+        // Count number of turn
+        numOfRound += 1
         if playerTurn == true {
             playerTurn = false
         } else {

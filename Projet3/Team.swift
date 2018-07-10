@@ -187,10 +187,6 @@ class Team {
         
     }
     
-    func endOfthegame() {
-        if members.isEmpty {
-            
-        }
-    }
-
 }
+
+
