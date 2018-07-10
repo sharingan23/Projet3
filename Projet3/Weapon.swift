@@ -13,13 +13,13 @@ class Weapon {
     var heal = 0
     init(damage: Int, heal: Int) {
         self.damage = damage
-        self.heal = 0
+        self.heal = heal
     }
 }
 
 class Knife : Weapon {
     init(){
-        super.init(damage: 15, heal: 0)
+        super.init(damage: 10, heal: 0)
     }
 }
 

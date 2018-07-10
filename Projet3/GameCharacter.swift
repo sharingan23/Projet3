@@ -16,16 +16,18 @@ class GameCharacter {
     var hp: Int = 0
     var damage = 0
     var type: [GameCharacter] = []
+    var weapon : Weapon
+    var heal = 0
     
     // Constructors n initialization iof name, hp ,damage and type
     
-    init (name :String, hp : Int, damage : Int) {
+    init (name :String, hp : Int, weapon: Weapon, damage : Int, heal: Int) {
         
         self.name = name
         self.hp = hp
+        self.weapon = weapon
         self.damage = damage
-        
-        
+        self.heal = heal
     }
     
     func attack(target: GameCharacter) {
@@ -38,22 +40,19 @@ class Fighter : GameCharacter {
     
     
     init(name: String) {
-        super.init(name : name, hp: 100, damage : 15)
+        super.init(name : name, hp: 100, weapon: Knife(), damage : 15,heal: 0)
+        self.damage = damage + weapon.damage
     }
 }
+    
 
 class Mage : GameCharacter {
-    var heal = 0
 
     init(name: String) {
         
-        super.init(name: name, hp: 70, damage: 2)
-        self.heal = 10
-    }
-    
-    func healcharacter (character: GameCharacter) {
-        character.hp = character.hp + heal
-        print("\(character.name) was healed \(heal) hp, now have \(character.hp) hp\n")
+        super.init(name: name, hp: 70,weapon: Potion(), damage: 2,heal: 10 )
+        self.heal = heal + weapon.heal
+        self.damage = damage + weapon.damage
     }
     
     func mageAction() -> Bool {
@@ -72,22 +71,34 @@ class Mage : GameCharacter {
             print("Please type 1 or 2")
             return mageAction()
         }
+        
+    }
 
+    
+    func healcharacter (character: GameCharacter) {
+        character.hp = character.hp + heal
+        print("\(character.name) was healed \(heal) hp, now have \(character.hp) hp\n")
     }
 }
 
-class Colossus : GameCharacter {
-    init(name: String) {
-        super.init(name: name, hp: 130, damage: 4)
+    
+    class Colossus : GameCharacter {
+        init(name: String) {
+            super.init(name: name, hp: 130, weapon: Axe(), damage: 2, heal: 0)
+            self.damage = damage + weapon.damage
+        }
+        
     }
     
-}
-
-class Dwarf: GameCharacter {
-    init(name: String) {
-        super.init(name: name, hp: 60, damage: 35)
+    class Dwarf: GameCharacter {
+        init(name: String) {
+            super.init(name: name, hp: 60, weapon: WoodenSword(), damage: 30,heal: 0)
+            self.damage = damage + weapon.damage
+        }
     }
-}
+
+
+
     
 
 

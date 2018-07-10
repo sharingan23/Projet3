@@ -135,7 +135,7 @@ class Team {
         //Loop of members
         for personnage in self.members {
             if let mage = personnage as? Mage{
-                print("Team \(self.name) : •Mage - Name: \(mage.name) - HP: \(mage.hp) hp - Damage: \(mage.damage) hp - Heal: \(mage.heal) hp\n")
+                print("Team \(self.name) : •Mage - Name: \(mage.name) - HP: \(mage.hp) hp - Damage: \(mage.damage) hp - Heal: \(mage.heal) hp )\n")
                 
             }
             

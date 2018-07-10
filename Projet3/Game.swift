@@ -12,12 +12,16 @@ class Game {
     var team1 : Team
     var team2 : Team
     var playerTurn : Bool
+    var weapons : [Weapon]
+    var healingWeapon : [Weapon]
     
     //Constructor
     
     init (){
         //Initialization of properties of game
         playerTurn = true
+        self.weapons = [Knife(),WoodenSword(),Axe(), TitaniumSword()]
+        self.healingWeapon = [Potion(),ArcHeal(),PainKiller()]
         self.team1 = Team()
         self.team2 = Team()
     
@@ -37,25 +41,44 @@ class Game {
         
     }
     
+    func chestOrNot() -> Int {
+       let rand0To9 = Int(arc4random_uniform(8))
+        
+        if rand0To9 < 4 {
+            return rand0To9
+        }
+        
+        return rand0To9
+    }
+    
     func fight(){
-        // Chech if all character of team 1 are dead ou Team 2
+        // Check if all character of team 1 are dead ou Team 2
         if team1.members.isEmpty {
             print("C'est la fin du combat, l'equipe \(team2.name) a gagné, bravo !")
         } else if team2.members.isEmpty {
             print("C'est la fin du combat, l'equipe \(team1.name) a gagné, bravo !")
         }
-        // Check Whose turn
+        // Check Whose turn, true player 1 turn else PLayer 2 turn
         if playerTurn {
         print("Please Team: \(team1.name) choose your Character to send in Arena")
         // Ask to CHoose Player to play
         let player = team1.chooseCharacter()
         
         print("you choosed: \(player.name)\n")
-        //Chech if he is a Mage
+        //Check if he is a Mage
         if ((player as? Mage) != nil) {
-            print("\(player.name) is a Mage, To heal type 1 or To attack type 2?\n")
+            print("\(player.name) is a Mage\n")
             
             let mage = player as! Mage
+            
+            // Chest Appear or not
+            let num = chestOrNot()
+            if num < 4 {
+                mage.heal = healingWeapon[num].heal
+                print("New chest appear and the player was equiped and now he heal \(mage.heal) hp")
+                }
+            
+            print("To heal type 1 or To attack type 2?\n")
             // If he is a Mage Ask if the player want to heal or attack
             if mage.mageAction() {
                 print("Please type the name of your character you want to heal")
@@ -68,8 +91,8 @@ class Game {
                 //Change turn and give hand to player 2
                 playerTurn = false
                 self.fight()
-            }
-            else {
+            }else {
+            
                 print("Please type the name of the character you want to attack\n")
                 let playerToAttack = team2.chooseCharacter()
                 mage.attack(target: playerToAttack)
@@ -86,6 +109,12 @@ class Game {
             
         }
         //If other than Mage ask to choose enemy character to attack
+            // Check if Check appear or not
+            let num = chestOrNot()
+            if num < 4 {
+                player.damage = weapons[num].damage
+                print("New chest appear and the player was equiped and now he do \(player.damage) hp of damage")
+            }
         print("Please type the name of the character you want to attack\n")
         let playerToAttack = team2.chooseCharacter()
         
@@ -107,6 +136,13 @@ class Game {
                     print("\(player.name) is a Mage, To heal type 1 or To attack type 2?\n")
                     
                     let mage = player as! Mage
+                    
+                    let num = chestOrNot()
+                    if num < 4 {
+                        print("New chest appear and the player was equiped and now he heal \(mage.heal) hp")
+                        mage.heal = healingWeapon[num].heal
+                    }
+                    
                     // Ask to heal or attack
                     if mage.mageAction() {
                         let playerToHeal = team2.chooseCharacter()
@@ -132,6 +168,13 @@ class Game {
                     }
                     
                     
+                }
+            
+                // Check if Check appear or not
+                let num = chestOrNot()
+                if num < 4 {
+                    player.damage = weapons[num].damage
+                    print("New chest appear and the player was equiped and now he do \(player.damage) hp of damage")
                 }
                 // If other character than mage, attack
                 print("Please type the name of the character you want to attack\n")
