@@ -14,6 +14,7 @@ class Game {
     var playerTurn : Bool
     var weapons : [Weapon]
     var healingWeapon : [Weapon]
+    // variables for stats
     var numOfRound = 0
     var numOfHeal = 0
     
@@ -31,26 +32,47 @@ class Game {
     }
     
     
-    func chestOrNot() -> Int {
-       let rand0To9 = Int(arc4random_uniform(12))
-        
-        if rand0To9 < 4 {
-            return rand0To9
-        }
-        
-        return rand0To9
+    func chestOrNot(player: GameCharacter) {
+       let num = Int(arc4random_uniform(30))
+        //Check if he is a Mage
+        if let mage = player as? Mage {
+            // Chest Appear or not
+            if num < 4 {
+                mage.heal = healingWeapon[num].heal
+                print("New chest appear and the player was equiped and now he heal \(mage.heal) hp")
+                 // Bonus : Increase of heal power
+                } else if num < 8 {
+                mage.heal = mage.heal*2
+                print("\(mage.name) get power of God and his healing power is now increased,and now he heal \(mage.heal) hp :)")
+                    // Bonus :Decrease of heal power
+                    } else if num < 12 {
+                    mage.heal = mage.heal/2
+                    print("\(mage.name) is sick and his healing power is now decreased,and now he heal \(mage.heal) hp :(")
+                    }
+        }else if num < 4 {
+            player.damage = weapons[num].damage
+            print("New chest appear and the player was equiped and now he do \(player.damage) hp of damage")
+                // Bonus : Increase of damage
+                } else if num < 8 {
+                    player.damage = player.damage*2
+                    print("\(player.name) get power of God and his damage is now increased,and now he do \(player.damage) hp of damage")
+                // Decrease of damage
+                    } else if num < 12 {
+                        player.damage = player.damage/2
+                        print("\(player.name) is sick and his damage is now decreased,and now he do \(player.damage) hp of damage")
+                        }
     }
-    
+        
     func fight() {
-        // Check if all character of team 1 or Team 2 are dead
+        // Check if all character of team 1 or Team 2 are dead to end the fight
         if team1.members.isEmpty {
+            print("It is the end of the fight, Team \(team2.name) win the game, Congrats !")
             print("The fight had \(numOfRound) round,and the mages healed \(numOfHeal) times in the whole game")
-            print("C'est la fin du combat, l'equipe \(team2.name) a gagné, bravo !")
             return
             
         } else if team2.members.isEmpty {
+            print("It is the end of the fight, Team \(team1.name) win the game, Congrats !")
             print("The fight had \(numOfRound) round,and the mages healed \(numOfHeal) times in the whole game")
-            print("C'est la fin du combat, l'equipe \(team1.name) a gagné, bravo !")
             return
         }
         
@@ -68,24 +90,10 @@ class Game {
         
         print("you choosed: \(player.name)\n")
         //Check if he is a Mage
-        if ((player as? Mage) != nil) {
+        if let mage = player as? Mage {
             print("\(player.name) is a Mage\n")
-            
-            let mage = player as! Mage
-            
-            // Chest Appear or not
-            let num = chestOrNot()
-            if num < 4 {
-                mage.heal = healingWeapon[num].heal
-                print("New chest appear and the player was equiped and now he heal \(mage.heal) hp")
-                // Bonus : Increase of heal power
-            } else if num < 8 {
-                mage.heal = mage.heal*2
-                print("\(mage.name) get power of God and his healing power is now increased,and now he heal \(mage.heal) hp :)")
-                } else if num < 12 {
-                print("\(mage.name) is sick and his healing power is now decreased,and now he heal \(player.heal) hp :(")
-                player.heal = player.heal/2
-                }
+            //chest Apper or God event or nothing happens
+            chestOrNot(player: mage)
             
             print("To heal type 1 or To attack type 2?\n")
             // If he is a Mage Ask if the player want to heal or attack
@@ -130,18 +138,8 @@ class Game {
         }
         //If other than Mage ask to choose enemy character to attack
             // Check if Check appear or not
-            let num = chestOrNot()
-            if num < 4 {
-                player.damage = weapons[num].damage
-                print("New chest appear and the player was equiped and now he do \(player.damage) hp of damage")
-                // Bonus : Increase of damage
-                } else if num < 8 {
-                    player.damage = player.damage*2
-                    print("\(player.name) get power of God and his damage is now increased,and now he do \(player.damage) hp of damage")
-                    } else if num < 12 {
-                    print("\(player.name) is sick and his damage is now decreased,and now he do \(player.damage) hp of damage")
-                    player.damage = player.damage/2
-                    }
+            chestOrNot(player: player)
+        
         print("Please type the name of the character you want to attack\n")
         let playerToAttack = player2.chooseCharacter()
         

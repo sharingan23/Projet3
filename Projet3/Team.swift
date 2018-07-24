@@ -128,10 +128,11 @@ class Team {
     
     func createCharacters () {
         //3 character created
+        while members.count < 3 {
         addCharacterToTeam(charac: createCharacter())
-        addCharacterToTeam(charac: createCharacter())
-        addCharacterToTeam(charac: createCharacter())
+        }
     }
+    
     
     
     func infoTeam () {
