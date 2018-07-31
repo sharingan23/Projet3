@@ -14,14 +14,15 @@ class Team {
     var name : String = "nom"
     var members :[GameCharacter] = []
     static var charactersName : [String] = []
-    init() {
-    
+    var number: Int
+    init(number:Int) {
+    self.number = number
     selectTeamName()
     
     }
     
     func selectTeamName () {
-        print("Type your team name please:")
+        print("Player \(number) type your team name please:")
         let name = readLine()
         if let name = name {
             self.name = name
@@ -159,13 +160,15 @@ class Team {
     func chooseCharacter() -> GameCharacter{
         
         //Ask to type for choose character
-        let name = readLine()
+        let entry = readLine()
         
         // Search if typed personnage is on team
         for personnage in members{
             
-            if name! == personnage.name{
-                return personnage
+            if let name = entry{
+                if name == personnage.name {
+                    return personnage
+                }
             }
         }
         

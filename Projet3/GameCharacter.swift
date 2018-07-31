@@ -40,7 +40,7 @@ class Fighter : GameCharacter {
     
     
     init(name: String) {
-        super.init(name : name, hp: 100, weapon: Knife(), damage : 25,heal: 0)
+        super.init(name : name, hp: 100, weapon: TitaniumSword() , damage : 25,heal: 0)
         self.damage = damage + weapon.damage
     }
 }

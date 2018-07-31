@@ -27,8 +27,8 @@ class Game {
         playerTurn = true
         self.weapons = [Knife(),WoodenSword(),Axe(), TitaniumSword()]
         self.healingWeapon = [Potion(),ArcHeal(),PainKiller()]
-        self.team1 = Team()
-        self.team2 = Team()
+        self.team1 = Team(number: 1)
+        self.team2 = Team(number: 2)
         
         //Initialization of game in team
     }
