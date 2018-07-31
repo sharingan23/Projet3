@@ -17,6 +17,8 @@ class Game {
     // variables for stats
     var numOfRound = 0
     var numOfHeal = 0
+    // End Game
+    var endOfThegame = false
     
     //Constructor
     
@@ -68,13 +70,15 @@ class Game {
         if team1.members.isEmpty {
             print("It is the end of the fight, Team \(team2.name) win the game, Congrats !")
             print("The fight had \(numOfRound) round,and the mages healed \(numOfHeal) times in the whole game")
-            return
+            endOfThegame = true
             
         } else if team2.members.isEmpty {
             print("It is the end of the fight, Team \(team1.name) win the game, Congrats !")
             print("The fight had \(numOfRound) round,and the mages healed \(numOfHeal) times in the whole game")
-            return
+            endOfThegame = true
         }
+        
+        if endOfThegame == false {
         
         //Interve players
         var player1 = team2
@@ -156,5 +160,6 @@ class Game {
         }
         self.fight()
 
+        }
     }
-} 
+}

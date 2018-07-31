@@ -122,7 +122,7 @@ class Team {
            
         //Add the character to team
     func addCharacterToTeam (charac: GameCharacter) {
-        self.members = members + [charac]
+        self.members.append(charac)
         Team.charactersName.append(charac.name)
     }
     
