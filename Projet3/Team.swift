@@ -57,14 +57,14 @@ class Team {
             let name = readLine()
             //Use of function checkCharactersName of class game , NOT function of class Team
             if let name = name {
-            if checkCharactersName(checkname: name) {
+                if checkCharactersName(checkname: name) {
                 return name
             
+                }
+            return createCharactersName()
             }
             return createCharactersName()
         }
-            return createCharactersName()
-    }
     
     func createCharacter () -> GameCharacter {
         

@@ -35,27 +35,27 @@ class Game {
     
     
     func chestOrNot(player: GameCharacter) {
-       let num = Int(arc4random_uniform(30))
+        let num = Int(arc4random_uniform(30))
         //Check if he is a Mage
         if let mage = player as? Mage {
             // Chest Appear or not
             if num < 4 {
                 mage.heal = healingWeapon[num].heal
                 print("New chest appear and the player was equiped and now he heal \(mage.heal) hp")
-                 // Bonus : Increase of heal power
-                } else if num < 8 {
-                mage.heal = mage.heal*2
-                print("\(mage.name) get power of God and his healing power is now increased,and now he heal \(mage.heal) hp :)")
+                // Bonus : Increase of heal power
+            } else if num < 8 {
+                    mage.heal = mage.heal*2
+                    print("\(mage.name) get power of God and his healing power is now increased,and now he heal \(mage.heal) hp :)")
                     // Bonus :Decrease of heal power
                     } else if num < 12 {
-                    mage.heal = mage.heal/2
-                    print("\(mage.name) is sick and his healing power is now decreased,and now he heal \(mage.heal) hp :(")
+                        mage.heal = mage.heal/2
+                        print("\(mage.name) is sick and his healing power is now decreased,and now he heal \(mage.heal) hp :(")
                     }
         }else if num < 4 {
             player.damage = weapons[num].damage
             print("New chest appear and the player was equiped and now he do \(player.damage) hp of damage")
-                // Bonus : Increase of damage
-                } else if num < 8 {
+            // Bonus : Increase of damage
+            } else if num < 8 {
                     player.damage = player.damage*2
                     print("\(player.name) get power of God and his damage is now increased,and now he do \(player.damage) hp of damage")
                 // Decrease of damage
@@ -112,13 +112,12 @@ class Game {
                 // Count number of turn
                 numOfRound += 1
                 numOfHeal += 1
-                //Change turn and give hand to Team 1 or Team 2
+                //change player turn
                 if playerTurn == true {
                     playerTurn = false
                 } else {
                     playerTurn = true
                 }
-                self.fight()
             }else {
             
                 print("Please type the name of the character you want to attack\n")
@@ -130,16 +129,14 @@ class Game {
                 player2.infoTeam()
                 //Count number of turn
                 numOfRound += 1
+                //change player turn
                 if playerTurn == true {
                     playerTurn = false
                 } else {
                     playerTurn = true
                 }
-                self.fight()
-                
-
             }
-        }
+        }else{
         //If other than Mage ask to choose enemy character to attack
             // Check if Check appear or not
             chestOrNot(player: player)
@@ -151,15 +148,18 @@ class Game {
         player2.deleteDeadCharacter()
         player1.infoTeam()
         player2.infoTeam()
-        // Count number of turn
-        numOfRound += 1
-        if playerTurn == true {
-            playerTurn = false
-        } else {
-            playerTurn = true
+            // Count number of turn
+            numOfRound += 1
+            //change player turn
+            if playerTurn == true {
+                playerTurn = false
+            } else {
+                playerTurn = true
+            }
+        
+
         }
         self.fight()
-
         }
     }
 }
